@@ -1,0 +1,159 @@
+// A bare bones config - notably module: "commonjs", no source maps, .d.ts files
+
+// https://www.typescriptlang.org/tsconfig
+{
+  // ---------------------
+  // File inclusion
+  // ---------------------
+  //"exclude": ["node_modules", "bower_components", "jspm_packages"], //also outDir
+  //"extends": false, //can references other tsconfig.json
+  //"files": false,
+  //"include": ["**/*"], //[] if files specified
+  //"references": false, //for large projects
+  //"typeAcquisition": false, //affects @types
+
+  "compilerOptions": {
+    // ---------------------
+    // Project options
+    // ---------------------
+    //"allowJs": false,
+    //"checkJS": false,
+    //"composite": true, //affects a number of aspects of the build; in general, true is more performant
+    //"declaration": false, //generate .d.ts
+    //"declarationMap": false, //"go to definition"
+    //"downlevelIteration": false, //related to older JS versions
+    //"importHelpers": false, //related to older JS versions
+    //"incremental": true, //true if composite, false otherwise
+    //"isolatedModules": false, //related to specific tooling i.e. Babel
+    //"jsx": undefined, //controls how JSX in JS files is handled
+    //"lib": undefined, //automatically includes a broad set of libs; related to target
+    //"module": "CommonJS", //"CommonJS" for Node; browser maybe ES2020
+    //"noEmit": false,
+    //"outDir": undefined, //if not specified, js files are emitted in same directory
+    //"outFile": undefined, //cannot be used unless module is None, System, or AMD
+    //"plugins": [], //plugins can issue their own warnings/errors
+    //"removeComments": false,
+    //"rootDir": undefined, //if composite, directory containing tsconfig.json
+    //"sourceMap": false, //for debuggers
+    //"target": "ES3", //also affects lib
+    //"tsBuildInfoFile": ".tsbuildinfo", //if incremental is true
+    "module": "CommonJS",
+    "outDir": "build",
+    "target": "ES2019",
+    // ---------------------
+    // Strict Checks
+    // ---------------------
+    //"alwaysStrict": false,
+    //"noImplicitAny": false,
+    //"noImplicitThis": false,
+    //"strict": false, //setting to true enables all strict checks
+    //"strictBindCallApply": false,
+    //"strictFunctionTypes": false,
+    //"strictNullChecks": false,
+    //"strictPropertyInitialization": false,
+    "strict": true,
+    // ---------------------
+    // Module Resolution
+    // ---------------------
+    //"allowSyntheticDefaultImports": false, //otherwise import * as React
+    //"allowUmdGlobalAccess": false,
+    //"baseUrl": "", //can set base directory imports are resolved from relative to tsconfig.json
+    //"esModuleInterop": false, //recommended; also enables allowSyntheticDefaultImports
+    //"moduleResolution": "classic", //"node" recommended
+    //"paths": {}, //related to imports
+    //"preserveSymlinks": false,
+    //"rootDirs": [],
+    //"typeRoots": [], //only packages under typeRoots will be included
+    //"types": [], //only packages listed will be included
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    // ---------------------
+    // Source Maps
+    // ---------------------
+    //"inlineSourceMap": false,
+    //"inlineSources": false, //often useful in the same cases as inlineSourceMa
+    //"mapRoot": "", //where debugger should locate map files
+    //"sourceRoot": "", //where a debugger should locate TypeScript files
+    // ---------------------
+    // Linter Checks
+    // ---------------------
+    //"noFallthroughCasesInSwitch": false, //See ESLint
+    //"noImplicitReturns": false, //See ESLint
+    //"noPropertyAccessFromIndexSignature": false, //restricts dot notation for properties
+    //"noUncheckedIndexedAccess": false, //indexed access automatically undefined possibly
+    //"noUnusedLocals": false, //See ESLint
+    //"noUnusedParameters": false, //See ESLint
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    // ---------------------
+    // Experimental
+    // ---------------------
+    //"emitDecoratorMetadata": false,
+    //"experimentalDecorators": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    // ---------------------
+    // Command Line
+    // ---------------------
+    //"preserveWatchOutput": false,
+    //"pretty": true, //colorized compiler messages
+    // ---------------------
+    // Watch Options
+    // ---------------------
+    //"fallbackPolling": undefined, //used if native file watchers aren't available
+    //"watchDirectory": "useFsEvents", //rely on OS
+    //"watchFile": "useFsEvents", //rely on OS
+    // ---------------------
+    //Advanced
+    // ---------------------
+    //"allowUnreachableCode": undefined, //shows warnings by default?
+    //"allowUnusedLabels": false,
+    //"assumeChangesOnlyAffectDirectDependencies": false, //slow builds?
+    //"charset": "", //deprecated
+    //"declarationDir": "", //i.e. types/
+    //"diagnostics": false, //deprecated
+    //"disableReferencedProjectLoad": false, //for large projects
+    //"disableSizeLimit": false, //for large projects
+    //"disableSolutionSearching": false, //for large projects
+    //"disableSourceOfProjectReferenceRedirect": false, //related to references
+    //"emitBOM": false,
+    //"emitDeclarationOnly": false,
+    //"explainFiles": false, //for debugging how a file is included
+    //"extendedDiagnostics": false, //debugging slow builds?
+    //"forceConsistentCasingInFileNames": false, //recommended true
+    //"generateCpuProfile": "profile.cpuprofile", //debugging slow builds?
+    //"importsNotUsedAsValues": "remove", //importing types can cause side effects (rarely)
+    //"jsxFactory": "React.createElement",
+    //"jsxFragmentFactory": "React.Fragment",
+    //"jsxImportSource": "react",
+    //"keyofStringsOnly": false, //deprecated
+    //"listEmittedFiles": false,
+    //"listFiles": false, //files used in compilation
+    //"maxNodeModuleJsDepth": 0, //using .d.ts is much preferred
+    //"newLine": undefined, //platform specific
+    //"noEmitHelpers": false,
+    //"noEmitOnError": false, //false is useful for watching
+    //"noErrorTruncation": false, //deprecated
+    //"noImplicitUseStrict": false, //esoteric "use strict"
+    //"noLib": false,
+    //"noResolve": false,
+    //"noStrictGenericChecks": false,
+    //"out": undefined, //deprecated
+    //"preserveConstEnums": false,
+    //"reactNamespace": "React", //jsxFactory option is preferred
+    //"resolveJsonModule": false,
+    //"skipDefaultLibCheck": false, //use skipLibCheck instead
+    //"skipLibCheck": false, //recommended true
+    //"stripInternal": false, //esoteric
+    //"suppressExcessPropertyErrors": false,
+    //"suppressImplicitAnyIndexErrors": false,
+    //"traceResolution": false, //for debugging how a file is included
+    //"useDefineForClassFields": false //affects setting inherited values; caused by unfinalized spec
+    "allowUnreachableCode": false,
+    "assumeChangesOnlyAffectDirectDependencies": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true
+  }
+}
