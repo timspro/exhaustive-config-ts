@@ -1,0 +1,8 @@
+{
+  // for global ESLint
+  // "eslint.options": {
+  //   "parser": "/usr/lib/node_modules/@typescript-eslint/parser",
+  //   "resolvePluginsRelativeTo": "/usr/lib/node_modules"
+  // },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

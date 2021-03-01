@@ -1,0 +1,461 @@
+# Specified according to https://eslint.org/docs/user-guide/configuring
+
+# If globally installed, you will need to specify exact path i.e. /usr/lib/node_modules/@typescript-eslint/parser
+# Should instead be done on command line via --parser option if using plugins
+parser: "@typescript-eslint/parser"
+
+# Default parser options from https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/parser/README.md#configuration
+# parserOptions:
+#   ecmaFeatures:
+#     jsx: false # in .jsx or .tsx files, jsx is always allowed
+#     globalReturn: false
+#   ecmaVersion: 2018
+#   jsxPragma: "React" # unnecessary with project
+#   jsxFragmentName: null # unnecessary with project
+#   lib: ["es2018"] # unnecessary with project
+#   project: # required for rules that use type information
+#   tsconfigRootDir: # relative paths are interpreted relative to cwd if not set
+#   projectFolderIgnoreList: ["**/node_modules/**"]
+#   extraFileExtensions:
+#   warnOnUnsupportedTypeScriptVersion: true
+#   createDefaultProgram: false # an esoteric option for backwards compatibility
+
+parserOptions:
+  ecmaVersion: 2019
+  project: "**/tsconfig.json"
+
+# processor: # used for some plugins
+
+# env: ... should be either browser or node (not both) but it's easier to just
+#  let TypeScript worry about what globals are defined
+#  https://eslint.org/docs/user-guide/configuring/language-options#specifying-environments
+env:
+  browser: true
+  node: true
+  jest: true
+
+# globals:
+
+# With a global install, must use command line option --resolve-plugins-relative-to
+# Argument for option is the directory the plugin is installed to i.e. /usr/lib/node_modules
+plugins: ["@typescript-eslint"]
+
+# noInlineConfig: false # disables inline rule disabling
+
+reportUnusedDisableDirectives: true
+
+# settings: # used by some plugins perhaps
+
+root: true # prevent ESLint for looking for more config files once this one is found
+
+# extends: # use a base eslintrc
+
+ignorePatterns: ["**/node_modules", "**/build"]
+
+# same order for rules as https://eslint.org/docs/rules/
+
+rules:
+  for-direction: "error"
+  getter-return: "error"
+  no-async-promise-executor: "error"
+  no-await-in-loop: "warn"
+  no-compare-neg-zero: "warn"
+  no-cond-assign: "error"
+  # no-console: "off" # console.log is too useful for debugging
+  no-constant-condition: "warn"
+  no-control-regex: "error"
+  no-debugger: "warn"
+  no-dupe-args: "warn"
+  no-dupe-else-if: "error"
+  no-dupe-keys: "error"
+  no-duplicate-case: "error"
+  no-empty: ["warn", { allowEmptyCatch: true }]
+  no-empty-character-class: "error"
+  no-ex-assign: "warn" # no exception reassignment
+  no-extra-boolean-cast: "warn"
+  # no-extra-parens: # Prettier; Also TSLint
+  # no-extra-semi: # Prettier; Also TSLint
+  no-func-assign: "error"
+  no-import-assign: "error"
+  no-inner-declarations: "warn" # affects var and more importantly function; let, const unaffected
+  no-invalid-regexp: "error"
+  no-irregular-whitespace: "warn" # Prettier should fix (?) but worthwhile to be extra sure
+  # no-loss-of-precision: "off" # See TSLint
+  no-misleading-character-class: "warn"
+  no-obj-calls: "error"
+  no-promise-executor-return: "warn"
+  # no-prototype-builtins: "off" # affects hasOwnProperty (not toString)... not worth it
+  no-regex-spaces: "warn"
+  no-setter-return: "warn"
+  no-sparse-arrays: "warn"
+  no-template-curly-in-string: "warn"
+  no-unexpected-multiline: "error"
+  no-unreachable: "warn"
+  no-unreachable-loop: "warn"
+  no-unsafe-finally: "error"
+  no-unsafe-negation: "error"
+  # no-unsafe-optional-chaining: "off" # seems like TypeScript would check this better
+  no-useless-backreference: "warn"
+  require-atomic-updates: "warn"
+  use-isnan: "error" # NaN is not equal to anything including itself
+  valid-typeof: "error"
+
+  accessor-pairs: "warn" # no set without get
+  array-callback-return: "error" # probably not necessary with TS
+  block-scoped-var: "warn"
+  class-methods-use-this: "warn"
+  # complexity: "off" # TODO: figure out good value for this?
+  consistent-return: "warn"
+  # curly: "off" # Prettier
+  # default-case: "off" # do not like specifying a default case if not needed
+  default-case-last: "warn"
+  # default-param-last: "off" # See TSLint
+  # dot-location: "off" # Prettier
+  # dot-notation: "off" # See TSLint
+  eqeqeq: "warn"
+  grouped-accessor-pairs: "warn"
+  # guard-for-in: "off" # for(... in ...) includes "inherited" prototype members... not worth enforcing check
+  # max-classes-per-file: "off" # no limits
+  no-alert: "warn"
+  no-caller: "warn"
+  no-case-declarations: "error"
+  no-constructor-return: "error"
+  # no-div-regex: "off" # regex can look like division... with syntax coloring seems like a very unlikely mistake
+  no-else-return: "warn"
+  # no-empty-function: "off" # See TSLint
+  no-empty-pattern: "warn"
+  # no-eq-null: "off" # unnecessary since it only affects ==
+  no-eval: "error"
+  no-extend-native: "error"
+  no-extra-bind: "warn"
+  no-extra-label: "warn"
+  no-fallthrough: "warn" # only applies if case does something
+  no-floating-decimal: "error"
+  no-global-assign: "error"
+  no-implicit-coercion: "warn"
+  # no-implicit-globals: "off" # modern bundlers encapsulate files
+  no-implied-eval: "error"
+  # no-invalid-this: "off" # See TSLint
+  no-iterator: "error"
+  # no-labels: "off" # useful for breaking out of loops within loops
+  no-lone-blocks: "warn"
+  # no-loop-func: "off" # unnecessary; only applies to var
+  # no-magic-numbers: "off" # See TSLint
+  # no-multi-spaces: "off" # Prettier
+  no-multi-str: "warn"
+  no-new: "warn"
+  no-new-func: "warn"
+  no-new-wrappers: "error"
+  no-nonoctal-decimal-escape: "warn"
+  no-octal: "warn"
+  no-octal-escape: "warn"
+  # no-param-reassign: "off" # it is useful to change/coerce parameters
+  no-proto: "error"
+  # no-redeclare: "off" # See TSLint
+  # no-restricted-properties: "off" # esoteric
+  no-return-assign: "warn"
+  # no-return-await: "off" # Prettier
+  no-script-url: "warn"
+  no-self-assign: "warn"
+  no-self-compare: "warn"
+  no-sequences: "warn" # rule still allows comma if wrapped by parentheses
+  # no-throw-literal: "off" # see TSLint
+  no-unmodified-loop-condition: "error"
+  # no-unused-expressions: "off" # See TSLint
+  no-unused-labels: "warn"
+  no-useless-catch: "warn"
+  no-useless-concat: "warn"
+  no-useless-escape: "warn"
+  no-useless-return: "warn"
+  no-void: "warn"
+  # no-warning-comments: "off" # esoteric
+  no-with: "warn"
+  prefer-named-capture-group: "warn"
+  prefer-promise-reject-errors: "error"
+  prefer-regex-literals: "warn"
+  radix: ["warn", "as-needed"]
+  # require-await: "off" # See TSLint
+  require-unicode-regexp: "warn"
+  # vars-on-top: "off" # unnecessary since only applies to var (due to hoisting)
+  wrap-iife: "warn"
+  yoda: "warn"
+
+  strict: ["warn", "never"] # no need for strict mode
+
+  # init-declarations: "off" # See TSLint
+  no-delete-var: "warn"
+  no-label-var: "warn"
+  # no-restricted-globals: "off" # esoteric
+  # no-shadow: "off" # See TSLint
+  no-shadow-restricted-names: "error"
+  no-undef: "warn" # no undefined variables
+  no-undef-init: "warn"
+  # no-undefined: "off" # undefined is useful
+  # no-unused-vars: "off" # See TSLint
+  # no-use-before-define: "off" # See TSLint
+
+  # array-bracket-newline: "off" # Prettier
+  # array-bracket-spacing: "off" # Prettier
+  # array-element-newline: "off" # Prettier
+  # block-spacing: "off" # Prettier
+  # brace-style: "off" # Prettier; Also TSLint
+  # camelcase: "off" # See TSLint naming-convention
+  # capitalized-comments: "off" # esoteric
+  # comma-dangle: "off" # Prettier
+  # comma-spacing: "off" # Prettier; Also TSLint
+  # comma-style: "off" # Prettier
+  # computed-property-spacing: "off" # Prettier
+  # consistent-this: "off" # esoteric
+  # eol-last: "off" # Prettier
+  # func-call-spacing: "off" # Prettier; Also TSLint
+  # func-name-matching: "off" # esoteric
+  # func-names: "off" # require or disallow named function expressions
+  # func-style: "off" # named functions seem fine despite "this"
+  # function-call-argument-newline: "off" # Prettier
+  # function-paren-newline: "off" # Prettier
+  # id-denylist: "off" # esoteric
+  # id-length: "off" # esoteric
+  # id-match: "off" # esoteric
+  # implicit-arrow-linebreak: "off" # Prettier
+  # indent: "off" # Prettier; Also TSLint
+  # jsx-quotes: "off" # Prettier
+  # key-spacing: "off" # Prettier
+  # keyword-spacing: "off" # Prettier; Also TSLint
+  # line-comment-position: "off" # Prettier
+  # linebreak-style: "off" # Prettier
+  # lines-around-comment: "off" # Prettier
+  # lines-between-class-members: "off" # Prettier; Also TSLint
+  # max-depth: "off" # TODO: come up with a sensible number?
+  # max-len: "off" # Prettier
+  # max-lines: "off" # no limit
+  # max-lines-per-function: "off" # no limit
+  # max-nested-callbacks: "off" # TODO: come up with a sensible number?
+  # max-params: "off" # TODO: come up with a sensible number?
+  # max-statements: "off" # no limit
+  # max-statements-per-line: "off" # no limit
+  # multiline-comment-style: "off" # esoteric
+  # multiline-ternary: "off" # Prettier
+  # new-cap: "off" # outdated by classes
+  new-parens: "warn"
+  # newline-per-chained-call: "off" # Prettier
+  # no-array-constructor: "off" # See TSLint
+  no-bitwise: "warn"
+  # no-continue: "off" # don't see why language feature should be disabled
+  # no-inline-comments: "off" # don't see why language feature should be disabled
+  no-lonely-if: "warn" # in an else statement
+  no-mixed-operators: "warn"
+  no-mixed-spaces-and-tabs: "warn"
+  no-multi-assign: "warn"
+  # no-multiple-empty-lines: "off" # Prettier
+  # no-negated-condition: "off" # seems situationally useful
+  # no-nested-ternary: "off" # don't see why language feature should be disabled
+  no-new-object: "warn"
+  # no-plusplus: "off" # don't see why language feature should be disabled
+  no-restricted-syntax:
+    - "warn"
+    - selector: ":not(BinaryExpression:matches([operator='!=='], [operator='==='])) > Literal[value=null]"
+      message: '"null" can usually be replaced by "undefined" or a "delete" expression'
+  # no-tabs: "off" # Prettier
+  # no-ternary: "off" # don't see why language feature should be disabled
+  # no-trailing-spaces: "off" # Prettier
+  # no-underscore-dangle: "off" # esoteric
+  no-unneeded-ternary: "warn"
+  # no-whitespace-before-property: "off" # Prettier
+  # nonblock-statement-body-position: "off" # Prettier
+  # object-curly-newline: "off" # Prettier
+  # object-curly-spacing: "off" # Prettier; Also TSLint
+  # object-property-newline: "off" # Prettier
+  one-var: ["warn", "never"] # don't declare multiple variable with one keyword
+  # one-var-declaration-per-line: "off" # Prettier
+  operator-assignment: "warn"
+  # operator-linebreak: "off" # Prettier
+  # padded-blocks: "off" # Prettier
+  # padding-line-between-statements: "off" # Prettier
+  prefer-exponentiation-operator: "warn"
+  prefer-object-spread: "warn"
+  # quote-props: "off" # Prettier
+  # quotes: "off" # See TSLint
+  # semi: "off" # Pretter; Also TSLint
+  # semi-spacing: "off" # Prettier
+  # semi-style: "off" # Prettier
+  sort-keys: "warn"
+  # sort-vars: "off" # seems not useful
+  # space-before-blocks: "off" # Prettier
+  # space-before-function-paren: "off" # Prettier; Also TSLint
+  # space-in-parens: "off" # Prettier
+  # space-infix-ops: "off" # Prettier; Also TSLint
+  # space-unary-ops: "off" # Prettier
+  # spaced-comment: "off" # Prettier
+  # switch-colon-spacing: "off" # Prettier
+  # template-tag-spacing: "off" # Prettier
+  unicode-bom: "warn"
+  # wrap-regex: "off" # Prettier
+
+  # arrow-body-style: "off" # Prettier
+  # arrow-parens: "off" # Prettier
+  # arrow-spacing: "off" # Prettier
+  constructor-super: "warn"
+  # generator-star-spacing: "off" # Prettier
+  no-class-assign: "warn"
+  # no-confusing-arrow: "off" # precedence of => operator is not that confusing
+  no-const-assign: "error"
+  # no-dupe-class-members: "off" # See TSLint
+  # no-duplicate-imports: "off" # See TSLint
+  no-new-symbol: "warn"
+  # no-restricted-exports: "off" # esoteric
+  # no-restricted-imports: "off" # esoteric
+  no-this-before-super: "warn"
+  no-useless-computed-key: "warn"
+  # no-useless-contructor: "off" # See TSLint
+  no-useless-rename: "warn"
+  no-var: "error"
+  object-shorthand: "warn"
+  prefer-arrow-callback: "error"
+  prefer-const: "warn"
+  # prefer-destructuring: "off" # works poorly with Prettier; not configurable
+  prefer-numeric-literals: "warn"
+  prefer-rest-params: "warn"
+  prefer-spread: "warn"
+  prefer-template: "warn"
+  require-yield: "warn"
+  # rest-spread-spacing: "off" # Prettier
+  # sort-imports: "off" # VSCode does a good job with this; combined they work poorly
+  symbol-description: "warn"
+  # template-curly-spacing: "off" # Prettier
+  # yield-star-spacing: "off" # Prettier
+
+  # same order as https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules
+  "@typescript-eslint/adjacent-overload-signatures": "warn"
+  "@typescript-eslint/array-type": ["warn", { default: "array-simple" }]
+  "@typescript-eslint/await-thenable": "warn"
+  "@typescript-eslint/ban-ts-comment": "warn"
+  "@typescript-eslint/ban-tslint-comment": "warn"
+  "@typescript-eslint/ban-types":
+    - "error"
+    - extendDefaults: true
+      types: { "object": false } # allow object type since it has specific uses
+  "@typescript-eslint/class-literal-property-style": ["error", "fields"]
+  # "@typescript-eslint/consistent-indexed-object-style": "off" # indexed object types are useful although Record preferable
+  "@typescript-eslint/consistent-type-assertions":
+    - "warn"
+    - assertionStyle: "never"
+  "@typescript-eslint/consistent-type-definitions": ["warn", "interface"]
+  "@typescript-eslint/consistent-type-imports": "warn"
+  # "@typescript-eslint/explicit-function-return-type": "off" # not necessary; inference is often better
+  # "@typescript-eslint/explicit-member-accessibility": "off" # seems annoying
+  "@typescript-eslint/explicit-module-boundary-types": "warn"
+  # "@typescript-eslint/member-delimiter-style": "off" # Prettier
+  "@typescript-eslint/member-ordering": "warn"
+  "@typescript-eslint/method-signature-style": "warn"
+  "@typescript-eslint/naming-convention":
+    - "warn"
+    - selector: "default"
+      format: ["camelCase", "PascalCase", "UPPER_CASE"]
+      leadingUnderscore: "allow"
+      trailingUnderscore: "allow"
+  "@typescript-eslint/no-base-to-string": "warn"
+  "@typescript-eslint/no-confusing-non-null-assertion": "warn"
+  "@typescript-eslint/no-confusing-void-expression": "warn"
+  "@typescript-eslint/no-dynamic-delete": "warn"
+  "@typescript-eslint/no-empty-interface": "warn"
+  "@typescript-eslint/no-explicit-any": "error"
+  "@typescript-eslint/no-extra-non-null-assertion": "warn"
+  "@typescript-eslint/no-extraneous-class": "warn"
+  "@typescript-eslint/no-floating-promises": "warn"
+  "@typescript-eslint/no-for-in-array": "warn"
+  "@typescript-eslint/no-implicit-any-catch": "warn"
+  "@typescript-eslint/no-inferrable-types": "warn"
+  "@typescript-eslint/no-invalid-void-type": "warn"
+  "@typescript-eslint/no-misused-new": "warn"
+  "@typescript-eslint/no-misused-promises": "warn"
+  "@typescript-eslint/no-namespace": "warn"
+  "@typescript-eslint/no-non-null-asserted-optional-chain": "warn"
+  "@typescript-eslint/no-non-null-assertion": "warn"
+  # "@typescript-eslint/no-parameter-properties": "off" # not clear why language feature should be disabled
+  "@typescript-eslint/no-require-imports": "warn"
+  # "@typescript-eslint/no-this-alias": "off" # situationally useful
+  # "@typescript-eslint/no-type-alias": "off" # situationally useful
+  "@typescript-eslint/no-unnecessary-boolean-literal-compare": "warn"
+  "@typescript-eslint/no-unnecessary-condition":
+    - "warn"
+    - allowConstantLoopConditions: true
+  "@typescript-eslint/no-unnecessary-qualifier": "warn"
+  "@typescript-eslint/no-unnecessary-type-arguments": "warn"
+  "@typescript-eslint/no-unnecessary-type-assertion": "warn"
+  "@typescript-eslint/no-unsafe-assignment": "error"
+  "@typescript-eslint/no-unsafe-call": "error"
+  "@typescript-eslint/no-unsafe-member-access": "error"
+  "@typescript-eslint/no-unsafe-return": "error"
+  "@typescript-eslint/no-var-requires": "warn"
+  "@typescript-eslint/non-nullable-type-assertion-style": "warn"
+  "@typescript-eslint/prefer-as-const": "warn"
+  "@typescript-eslint/prefer-enum-initializers": "warn"
+  "@typescript-eslint/prefer-for-of": "warn"
+  # "@typescript-eslint/prefer-function-type": "off" # situationally useful
+  "@typescript-eslint/prefer-includes": "warn"
+  "@typescript-eslint/prefer-literal-enum-member": "warn"
+  "@typescript-eslint/prefer-namespace-keyword": "warn"
+  # "@typescript-eslint/prefer-nullish-coalescing": "off" # not a fan of ?? syntaxl; strict-boolean-expressions helps instead
+  "@typescript-eslint/prefer-optional-chain": "warn"
+  "@typescript-eslint/prefer-readonly": "warn"
+  # "@typescript-eslint/prefer-readonly-parameter-types": "off" # seems annoying
+  "@typescript-eslint/prefer-reduce-type-parameter": "warn"
+  "@typescript-eslint/prefer-regexp-exec": "warn"
+  "@typescript-eslint/prefer-string-starts-ends-with": "warn"
+  "@typescript-eslint/prefer-ts-expect-error": "warn"
+  "@typescript-eslint/promise-function-async": "warn"
+  "@typescript-eslint/require-array-sort-compare": "warn"
+  "@typescript-eslint/restrict-plus-operands": "warn"
+  "@typescript-eslint/restrict-template-expressions":
+    - "warn"
+    - allowNumber: true
+  "@typescript-eslint/sort-type-union-intersection-members": "warn"
+  "@typescript-eslint/strict-boolean-expressions":
+    - "warn"
+    - allowNullableObject: true
+  "@typescript-eslint/switch-exhaustiveness-check": "warn"
+  "@typescript-eslint/triple-slash-reference": "warn"
+  # "@typescript-eslint/type-annotation-spacing": "off" # Prettier
+  # "@typescript-eslint/typedef": "off" # does not seem to be recommended
+  "@typescript-eslint/unbound-method": ["error", { "ignoreStatic": true }]
+  "@typescript-eslint/unified-signatures": "warn"
+
+  # "@typescript-eslint/brace-style": "off" # Prettier
+  # "@typescript-eslint/comma-dangle": "off" # Prettier
+  # "@typescript-eslint/comma-spacing": "off" # Prettier
+  "@typescript-eslint/default-param-last": "warn"
+  "@typescript-eslint/dot-notation": "warn"
+  # "@typescript-eslint/func-call-spacing": "off" # Prettier
+  # "@typescript-eslint/indent": "off" # Prettier
+  # "@typescript-eslint/init-declarations": "off" # seems situationally useful
+  # "@typescript-eslint/keyword-spacing": "off" # Prettier
+  # "@typescript-eslint/lines-between-class-members": "off" # Prettier
+  "@typescript-eslint/no-array-constructor": "error"
+  "@typescript-eslint/no-dupe-class-members": "warn"
+  "@typescript-eslint/no-duplicate-imports": "warn"
+  # "@typescript-eslint/no-empty-function": "off" # empty functions can be useful
+  # "@typescript-eslint/no-extra-parens": "off" # Prettier
+  # "@typescript-eslint/no-extra-semi": "off" # Prettier
+  "@typescript-eslint/no-invalid-this": "error"
+  "@typescript-eslint/no-loss-of-precision": "warn"
+  "@typescript-eslint/no-magic-numbers":
+    - "warn"
+    - ignore: [1, 2, 0, -1, -2, 60, 1000]
+      ignoreDefaultValues: true
+      ignoreEnums: true
+      ignoreNumericLiteralTypes: true
+      ignoreReadonlyClassProperties: true
+  "@typescript-eslint/no-redeclare": "warn"
+  "@typescript-eslint/no-shadow": "warn"
+  "@typescript-eslint/no-throw-literal": "warn"
+  "@typescript-eslint/no-unused-expressions": "error"
+  "@typescript-eslint/no-unused-vars": "warn"
+  "@typescript-eslint/no-use-before-define": "warn"
+  "@typescript-eslint/no-useless-constructor": "warn"
+  # "@typescript-eslint/object-curly-spacing": "off" # Prettier
+  # "@typescript-eslint/quotes": "off" # could be used to enforce `` everywhere but seems annoying
+  # "@typescript-eslint/require-await": "off" # useful to have easy way to create promises
+  "@typescript-eslint/return-await": ["warn", "in-try-catch"]
+  # "@typescript-eslint/semi": "off" # Prettier
+  # "@typescript-eslint/space-before-function-paren": "off" # Prettier
+  # "@typescript-eslint/space-infix-ops": "off" # Prettier
