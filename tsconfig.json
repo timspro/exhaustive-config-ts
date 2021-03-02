@@ -1,5 +1,3 @@
-// A bare bones config - notably module: "commonjs", no source maps, .d.ts files
-
 // https://www.typescriptlang.org/tsconfig
 {
   // ---------------------
@@ -11,7 +9,6 @@
   //"include": ["**/*"], //[] if files specified
   //"references": false, //for large projects
   //"typeAcquisition": false, //affects @types
-
   "compilerOptions": {
     // ---------------------
     // Project options
@@ -37,8 +34,6 @@
     //"sourceMap": false, //for debuggers
     //"target": "ES3", //also affects lib
     //"tsBuildInfoFile": ".tsbuildinfo", //if incremental is true
-    "module": "CommonJS",
-    "outDir": "build",
     "target": "ES2019",
     // ---------------------
     // Strict Checks
@@ -65,7 +60,6 @@
     //"rootDirs": [],
     //"typeRoots": [], //only packages under typeRoots will be included
     //"types": [], //only packages listed will be included
-    "baseUrl": "./",
     "esModuleInterop": true,
     "moduleResolution": "node",
     // ---------------------

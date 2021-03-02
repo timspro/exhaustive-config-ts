@@ -32,6 +32,7 @@ parserOptions:
 env:
   browser: true
   node: true
+  # seemed to need to install @types/jest in package.json even though it was in child directory in vscode
   jest: true
 
 # globals:
@@ -167,7 +168,7 @@ rules:
   no-useless-concat: "warn"
   no-useless-escape: "warn"
   no-useless-return: "warn"
-  no-void: "warn"
+  # no-void: "off" # used by TSLint i.e. to mark promises purposefully not awaited
   # no-warning-comments: "off" # esoteric
   no-with: "warn"
   prefer-named-capture-group: "warn"
